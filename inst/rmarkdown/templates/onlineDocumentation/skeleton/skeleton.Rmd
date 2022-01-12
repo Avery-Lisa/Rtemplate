@@ -1,0 +1,64 @@
+---
+title: "Title"
+author: "Lisa Avery, Princess Margaret Biostatistics"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+rmd_files: ["index.Rmd"]
+# bibliography:
+#   - bibfile.bib
+# csl: Vancouver.csl
+site: bookdown::bookdown_site
+header-includes:
+  - \usepackage{tabu}
+output:
+  bookdown::gitbook: 
+    split_by: 'section'
+    pandoc_args: [ "--csl", "Vancouver.csl" ]
+    config:
+      toc:
+        toc_depth: 3
+        collapse: none
+        scroll_highlight: yes
+        # before: |
+        #   <li> &nbsp;&nbsp; reportRx    </li>
+        #   <li> &nbsp;&nbsp; PMH Biostatistics</li>
+        after: |
+          <li> <a href="mailto:lisa.avery@uhn.ca">Lisa Avery</a>   </li>
+        toolbar:
+        position: fixed
+      edit : null
+#      download: "pdf"
+      search: yes
+      sharing:
+        facebook: false
+        twitter: false
+        all: false
+      fontsettings:
+        theme: white
+        family: sans
+        size: 2
+      info: no
+link-citations: yes
+colorlinks: yes
+graphics: yes
+fontsize: 11pt
+monofontoptions: "Scale=0.8"
+---
+
+```{r  include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(emo)
+library(reportRx)
+# createBibfile::rmdBibfile("../sanitised-library.bib","bibfile.bib")
+# make sure to uncomment the Vancouver.csl and bibfile.bib lines above and ensure the file paths are correct
+```
+
+# Introduction
+
+To open an external web resource:
+
+<a href="https://docs.gitbook.com/editing-content/markdown" target="_blank">A markdown reference.</a> 
+  
+You can use Hadley's emoji package, but these will fail with knit to latex   `r emo::ji("right")`
+
+If you create a pdf, uncomment the download line in the header

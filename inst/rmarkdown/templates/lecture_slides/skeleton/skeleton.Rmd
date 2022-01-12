@@ -1,0 +1,138 @@
+---
+title: "Lecture Title"
+subtitle: ""
+author: "Lisa Avery, PhD"
+institute: "Course Name"
+date: "`r format(Sys.time(), '%B %Y')`"
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    lib_dir: libs
+    nature:
+      highlightStyle: github 
+      highlightLines: true
+      countIncrementalSlides: false
+      navigation:
+        scroll: false
+---
+
+
+```{r setup, include=FALSE}
+library(tidyverse)
+knitr::opts_chunk$set(echo = FALSE,warning=FALSE,message=FALSE,comment='')
+img_out_width = '75%'
+```
+
+```{r notes, eval=F}
+# NOTES On How to Use This Presentation:
+# 
+# First, knit into the HTML and then open in SAFARI - NOT Firefox. Cloning screens does not work on Firefox
+# 
+# Once it is up and running, use 'c' to clone the presentation, move one presentation to another screen and press p to enter presenter mode.
+# 
+# If the slides need to be printed then they should be opened in Google's Chrome and printed from there - inverse slides won't look good
+# 
+# Reference Example: `r RefManageR::Citep(myBib,'Monsalve2005',.opts = list(cite.style = "numeric"))`
+# 
+# Image Example: <img src="libs/images/exposure_outcome.png" style="height:250'>
+
+
+```
+
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+
+style_xaringan(header_color = "#812914",
+               inverse_background_color = "#812914",
+               header_h1_font_size = '2rem',
+               header_h2_font_size = '1.5rem',
+               text_font_google = google_font("Lato"),
+               code_font_google = google_font("Fira Mono"),
+               # background_image = 'libs/images/yorku-logo.jpg',
+               # background_position = "bottom left",
+               # background_size = "106px 24px",
+               colors = c(dkred='#812914'),
+               title_slide_background_image = 'NULL',
+               extra_css = list(
+                 ".remark-slide-content h3" = list(
+                   'font-size' = '1.1rem',
+                   'margin-block-end' = '0'
+                 ),
+                 "img" = list(
+                   'display' =  'block', 
+                   'margin-left' =  'auto', 
+                   'margin-right' =  'auto', 
+                   'max-width '=  '80%', 
+                   'max-height' =  '75%',
+                   'width'=  'auto',
+                   'height'= 'auto')
+                 ,
+                 ".sub" = list(
+                   'color' = '#973017',
+                   'font-size' = '1.5rem',
+                   'margin-bottom' = '0px'
+                 ),
+                 ".c1" = list(
+                   'color' = '#733810',
+                   'font-weight' = 'bold'
+                 ),
+                 ".c2" = list(
+                   'color' = '#424406',
+                   'font-weight' = 'bold'
+                 ),
+                ".c3" = list(
+                   'color' = '#ee9d3',
+                   'font-weight' = 'bold'
+                 ),
+                 ".small" = list(
+                   'font-size' =  '75%'
+                 ),
+                 "li" = list(
+                   'padding-bottom' = '.75em'
+                 ),
+                 ".bigger" = list(
+                   'bottom' = '10em',
+                   'font-size' = '1.5rem'),
+                 ".biggerC" = list(
+                   'bottom' = '10em',
+                   'font-weight' = 'bold',
+                   'color' = '#424406')
+               )
+)
+
+
+theme_set(theme_bw())
+```
+
+```{css, echo=F}
+ul {
+  list-style: none; /* Remove default bullets */
+}
+
+ul li::before {
+  content: "\2023";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    color: '#973017'; /* Change the color */
+    font-weight: bold; /* If you want it to be bold */
+    display: inline-block; /* Needed to add space between the bullet and the text */ 
+    width: 1em; /* Also needed for space (tweak if needed) */
+    margin-left: -1em; /* Also needed for space (tweak if needed) */
+    margin-bottom: .25em;
+}
+```
+
+
+# An example image
+
+Create an images directory to store images in
+
+```{r out.width=img_out_width, eval=T}
+#knitr::include_graphics("images/powerplot.png")
+
+```
+
+???
+Presenter Notes here. Knitting will fail if there is a space after the '???'
+
+---
+

@@ -1,0 +1,4 @@
+name: onlineDocumentation
+description: >
+  The default template for creating a gitbook to post online
+create_dir: FALSE

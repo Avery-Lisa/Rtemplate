@@ -1,0 +1,4 @@
+name: lecture_slides
+description: >
+  The default template for lecture slides
+create_dir: FALSE
