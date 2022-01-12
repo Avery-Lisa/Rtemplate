@@ -4,7 +4,7 @@ author: "Lisa Avery, PMH Biostatistics"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   bookdown::word_document2:
-    reference_docx: 'wordTemplate.docx'
+#    reference_docx: 'wordTemplate.docx'
     toc: yes
     number_sections: FALSE
   bookdown::pdf_document2:
