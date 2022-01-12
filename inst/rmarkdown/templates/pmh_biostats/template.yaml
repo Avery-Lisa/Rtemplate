@@ -1,0 +1,4 @@
+name: pmh_biostats
+description: >
+  The default template for biostatistics reports for PMH
+create_dir: FALSE
