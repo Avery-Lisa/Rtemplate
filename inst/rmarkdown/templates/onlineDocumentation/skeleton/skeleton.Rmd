@@ -50,7 +50,7 @@ library(tidyverse)
 library(emo)
 library(reportRx)
 # createBibfile::rmdBibfile("../sanitised-library.bib","bibfile.bib")
-# make sure to uncomment the Vancouver.csl and bibfile.bib lines above and ensure the file paths are correct
+theme_set(theme_bw())
 ```
 
 # Introduction
