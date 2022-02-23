@@ -50,7 +50,12 @@ library(tidyverse)
 library(emo)
 library(reportRx)
 # createBibfile::rmdBibfile("../sanitised-library.bib","bibfile.bib")
-theme_set(theme_bw())
+theme_set(theme_bw(base_size = 10))
+
+# This can lead to some unexpected behaviour - if colours go awry comment this out
+options(list(ggplot2.discrete.fill = function() ggsci::scale_color_aaas(),
+             ggplot2.discrete.colour = function() ggsci::scale_color_aaas()))
+
 ```
 
 # Introduction
