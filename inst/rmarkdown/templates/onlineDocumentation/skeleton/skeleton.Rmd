@@ -45,12 +45,16 @@ monofontoptions: "Scale=0.8"
 ---
 
 ```{r  include=FALSE}
-knitr::opts_chunk$set(echo = FALSE,warning=FALSE,message=FALSE,comment='',dpi=300)
+knitr::opts_chunk$set(echo = FALSE,warning=FALSE,message=FALSE,comment='',dpi=300,dev="cairo_pdf")
 library(tidyverse)
 library(emo)
-library(reportRx)
+library(reportRmd)
 # createBibfile::rmdBibfile("../sanitised-library.bib","bibfile.bib")
-theme_set(theme_bw(base_size = 10))
+theme_pmh <- function(base_size=10){
+  theme_bw(base_size=base_size)  %+replace% 
+    theme(legend.position = 'bottom')
+}
+theme_set(theme_pmh(base_size=10))
 
 # This can lead to some unexpected behaviour - if colours go awry comment this out
 options(list(ggplot2.discrete.fill = function() ggsci::scale_fill_aaas(),

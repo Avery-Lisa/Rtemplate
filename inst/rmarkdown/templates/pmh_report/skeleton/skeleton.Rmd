@@ -16,14 +16,108 @@ mainfont: Calibri Light
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE,warning = FALSE,message = FALSE,comment = '',dpi=300)
+knitr::opts_chunk$set(echo = FALSE,warning = FALSE,message = FALSE,comment = '',dpi=300,dev="cairo_pdf")
 library(tidyverse)
-library(reportRx)
-# createBibfile::rmdBibfile("../sanitised-library.bib","bibfile.bib")
-theme_set(theme_bw(base_size = 10))
+library(reportRmd)
+# createBibfile::rmdBibfile("../library.bib","bibfile.bib")
+theme_pmh <- function(base_size=10){
+  theme_bw(base_size=base_size)  %+replace% 
+    theme(legend.position = 'bottom')
+}
+theme_set(theme_pmh(base_size=10))
 
 # This can lead to some unexpected behaviour - if colours go awry comment this out
 options(list(ggplot2.discrete.fill = function() ggsci::scale_fill_aaas(),
              ggplot2.discrete.colour = function() ggsci::scale_color_aaas()))
 
 ```
+
+
+```{r data-import}
+save(list=ls(),file=paste0('ws_',gsub('-','_',Sys.Date()),'.rda'))
+```
+
+
+# References
+
+<div id="refs"></div>
+
+
+# Check Formatting
+
+The purpose of this step is to ensure that the formatting of the data coincides with the data in the codebook or data dictionary. 
+
+## Formatting consistency
+
+## Duplicate entries
+
+
+## Result
+Verify here that the data is in a suitable format, or list changes that need to be made.  If necessary, updated the dataChanges.Rmd file
+
+# Cleaning Checks
+
+## Date Consistencies
+Assessments after DOB and prior to death date, dates within the range of the study.
+
+## Range Checks
+
+## Logical checks
+Do certain fields follow from other fields and do these make sense.
+
+## Missing Data
+Report on missingness in the database
+
+# Data Merges
+
+## Consistency of Variable Names
+
+## Consistency and Overlap of IDs
+
+# Distributional Checks
+
+## Categorical Variables
+
+## Ordinal Variables
+
+## Continuous Variables
+Identify variables that are normally and non-normally distributed and record these for future note.
+
+```{r results='asis',eval=F}
+# To nicely clear floats
+if (out_fmt=='pdf') cat('\n\n\\FloatBarrier\n\n')
+```
+
+
+# Repetitive Code Chunks
+```{r repeat-chunks,eval=F}
+
+src = lapply(1:18, function(i) {
+  label=paste0('trnsfm-sheet-',i)
+  caption <- paste('Study',i)
+
+  r_chunks_to_write = c("```{r {{label}},fig.height=7,fig.cap='{{cap}}'}", 
+             " analysis_data[[{{i}}]] %>%",
+    "pivot_longer(cols=c(Value,sqrtValue,logValue),names_to='Transform',values_to='Value') %>%",
+    "na.omit() %>%",
+    "ggplot(aes(x=Value)) +",
+    "geom_histogram() +",
+    "facet_grid(Group~Transform,scale='free') ",
+    '```\n\n')
+  knit_expand(text=r_chunks_to_write,
+              label=label,cap=caption)
+})
+# Output the source to allow reporting
+sink('repeat_chunks.Rmd')
+for (i in seq_along(src)){
+  cat(src[[i]])
+}
+sink()
+# Now the rmd file can be edited to have comments added
+# there are saved in strings for easy and reproducible compilation
+```
+
+```{r chunk-insert, child='repeat_chunks.Rmd',eval=F}
+# This will be replaced by the content of the child document
+```
+
